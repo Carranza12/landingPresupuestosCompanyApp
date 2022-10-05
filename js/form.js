@@ -32,6 +32,10 @@ const nextStep=(paso_actual)=>{
         document.getElementById('stepFour').style.display="none";
         document.getElementById('stepFive').style.display="block";
     }
+    if(paso_actual==='stepFive'){
+        document.getElementById('stepFive').style.display="none";
+        document.getElementById('stepEnd').style.display="block";
+    }
    
 }
 
