@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/form.css" />
-   
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" id="stepInitial">
       <div class="header" id="circlesContainer">
         <ul>
           <li class="active form_1_progressbar" id="circleInitial">
             <div>
-              <p >1</p>
+              <p>1</p>
             </div>
           </li>
-          <li class="form_2_progressbar"  id="circleOne">
+          <li class="form_2_progressbar" id="circleOne">
             <div>
               <p>2</p>
             </div>
           </li>
-          <li class="form_3_progressbar"  id="circleTwo">
+          <li class="form_3_progressbar" id="circleTwo">
             <div>
               <p>3</p>
             </div>
           </li>
-          <li class="form_3_progressbar"  id="circleThree">
+          <li class="form_3_progressbar" id="circleThree">
             <div>
               <p>4</p>
             </div>
           </li>
-          <li class="form_3_progressbar"  id="circleFour">
+          <li class="form_3_progressbar" id="circleFour">
             <div>
               <p>5</p>
             </div>
           </li>
-          <li class="form_3_progressbar"  id="circleFive">
+          <li class="form_3_progressbar" id="circleFive">
             <div>
               <p>6</p>
             </div>
           </li>
-          
         </ul>
       </div>
       <div class="form_wrap">
-        <div class="form_1 data_info" id="stepInitial">
+        <div class="form_1 data_info">
           <h2>Bienvenido al cotizador online!</h2>
           <form>
             <div class="form_container">
@@ -56,12 +55,84 @@
                 por favor llena los siguientes datos importantes, te tomará 5
                 minutos.
               </p>
-            
-              
             </div>
           </form>
         </div>
-        <div class="form_10 data_info" id="stepOne" style="display: none">
+
+        <div class="btnsContainer">
+          <div class="btns_wrap">
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                disabled
+                style="background: gray"
+                class="btn_next"
+                id="btnPrevStep"
+                onclick="prevStep('none')"
+              >
+                Anterior
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnNextStep"
+                onclick="nextStep('stepInitial')"
+              >
+                Siguiente
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="btns_wrap"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="stepOne" style="display: none">
+      <div class="header" id="circlesContainer">
+        <ul>
+          <li class="form_1_progressbar" id="circleInitial">
+            <div>
+              <p>1</p>
+            </div>
+          </li>
+          <li class="active form_2_progressbar" id="circleOne">
+            <div>
+              <p>2</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleTwo">
+            <div>
+              <p>3</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleThree">
+            <div>
+              <p>4</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleFour">
+            <div>
+              <p>5</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleFive">
+            <div>
+              <p>6</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="form_wrap">
+        <div class="form_1 data_info">
           <h2>Información de contacto</h2>
           <form>
             <div class="form_container">
@@ -71,7 +142,7 @@
               </div>
               <div class="input_wrap">
                 <label for="txtEnail">Email</label>
-                <input type="Email" name="email" id="txtEnail"/>
+                <input type="Email" name="email" id="txtEnail" />
               </div>
               <div class="input_wrap">
                 <label for="txtTelefono">Telefono</label>
@@ -86,154 +157,432 @@
             </div>
           </form>
         </div>
-        <div class="form_2 data_info" id="stepTwo" style="display: none">
-          <h2>¿Cual es tu presupuesto? </h2>
-          <form>
-            <div class="form_container">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selecciona tu presupuesto</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-            </div>
-          </form>
-        </div>
-        <div class="form_3 data_info" id="stepThree" style="display: none">
-          <h2>Professional Info</h2>
-          <form>
-            <div class="form_container">
-              <div class="input_wrap">
-                <label for="current_company">Current Company</label>
-                <input
-                  type="text"
-                  name="Current Company"
-                  id="current_company"
-                />
-              </div>
-              <div class="input_wrap">
-                <label for="total_experience">Total Experience</label>
-                <input
-                  type="text"
-                  name="Total Experience"
-                  id="total_experience"
-                />
-              </div>
-              <div class="input_wrap">
-                <label for="designation">Designation</label>
-                <input type="text" name="Designation" id="designation" />
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="form_3 data_info" id="stepFour" style="display: none">
-            <h2>Professional Info 4</h2>
-            <form>
-              <div class="form_container">
-                <div class="input_wrap">
-                  <label for="current_company">Current Company</label>
-                  <input
-                    type="text"
-                    name="Current Company"
-                    id="current_company"
-                  />
-                </div>
-                <div class="input_wrap">
-                  <label for="total_experience">Total Experience</label>
-                  <input
-                    type="text"
-                    name="Total Experience"
-                    id="total_experience"
-                  />
-                </div>
-                <div class="input_wrap">
-                  <label for="designation">Designation</label>
-                  <input type="text" name="Designation" id="designation" />
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="form_3 data_info" id="stepFive" style="display: none">
-            <h2>Professional Info 5</h2>
-            <form>
-              <div class="form_container">
-                <div class="input_wrap">
-                  <label for="current_company">Current Company</label>
-                  <input
-                    type="text"
-                    name="Current Company"
-                    id="current_company"
-                  />
-                </div>
-                <div class="input_wrap">
-                  <label for="total_experience">Total Experience</label>
-                  <input
-                    type="text"
-                    name="Total Experience"
-                    id="total_experience"
-                  />
-                </div>
-                <div class="input_wrap">
-                  <label for="designation">Designation</label>
-                  <input type="text" name="Designation" id="designation" />
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="form_3 data_info" id="stepEnd" style="display: none">
-            <h2>Mensaje final</h2>
-            <form>
-              <div class="form_container">
-                <div class="input_wrap">
-                  <label for="current_company">Current Company</label>
-                  <input
-                    type="text"
-                    name="Current Company"
-                    id="current_company"
-                  />
-                </div>
-                <div class="input_wrap">
-                  <label for="total_experience">Total Experience</label>
-                  <input
-                    type="text"
-                    name="Total Experience"
-                    id="total_experience"
-                  />
-                </div>
-                <div class="input_wrap">
-                  <label for="designation">Designation</label>
-                  <input type="text" name="Designation" id="designation" />
-                </div>
-              </div>
-            </form>
-          </div>
-      </div>
-      <div class="btns_wrap">
-        <div class="common_btns form_1_btns">
-          <button type="button" class="btn_next" id="btnNextStep" onclick="nextStep(currentStep,stepNext,currentCircle,CircleNext)">
-            Siguiente
-            <span class="icon">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </span>
-          </button>
-        </div>
-       
-      </div>
 
-      <div class="btns_wrap">
-        <div class="common_btns form_1_btns">
-          <button type="button" class="btn_next" id="btnPrevStep" onclick="prevStep(currentStep,stepNext,currentCircle,CircleNext)">
-            Anterior
-            <span class="icon">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </span>
-          </button>
+        <div class="btnsContainer">
+          <div class="btns_wrap">
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnPrevStep"
+                onclick="prevStep('stepOne')"
+              >
+                Anterior
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnNextStep"
+                onclick="nextStep('stepOne')"
+              >
+                Siguiente
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="btns_wrap"></div>
         </div>
-       
       </div>
     </div>
 
-   
+    <div class="wrapper" id="stepTwo" style="display: none">
+      <div class="header" id="circlesContainer">
+        <ul>
+          <li class="form_1_progressbar" id="circleInitial">
+            <div>
+              <p>1</p>
+            </div>
+          </li>
+          <li class="form_2_progressbar" id="circleOne">
+            <div>
+              <p>2</p>
+            </div>
+          </li>
+          <li class="active form_3_progressbar" id="circleTwo">
+            <div>
+              <p>3</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleThree">
+            <div>
+              <p>4</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleFour">
+            <div>
+              <p>5</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleFive">
+            <div>
+              <p>6</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="form_wrap">
+        <div class="form_1 data_info">
+          <h2>Información de contacto</h2>
+          <form>
+            <div class="form_container">
+              <div class="input_wrap">
+                <label for="txtNombre">Nombre completo</label>
+                <input type="text" name="nombre" id="txtNombre" />
+              </div>
+              <div class="input_wrap">
+                <label for="txtEnail">Email</label>
+                <input type="Email" name="email" id="txtEnail" />
+              </div>
+              <div class="input_wrap">
+                <label for="txtTelefono">Telefono</label>
+                <input
+                  type="number"
+                  maxlength="10"
+                  minlength="10"
+                  name="telefono"
+                  id="txtTelefono"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="btnsContainer">
+          <div class="btns_wrap">
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnPrevStep"
+                onclick="prevStep('stepTwo')"
+              >
+                Anterior
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnNextStep"
+                onclick="nextStep('stepTwo')"
+              >
+                Siguiente
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="btns_wrap"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="stepThree" style="display: none">
+      <div class="header" id="circlesContainer">
+        <ul>
+          <li class="form_1_progressbar" id="circleInitial">
+            <div>
+              <p>1</p>
+            </div>
+          </li>
+          <li class="form_2_progressbar" id="circleOne">
+            <div>
+              <p>2</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleTwo">
+            <div>
+              <p>3</p>
+            </div>
+          </li>
+          <li class="active form_3_progressbar" id="circleThree">
+            <div>
+              <p>4</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleFour">
+            <div>
+              <p>5</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleFive">
+            <div>
+              <p>6</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="form_wrap">
+        <div class="form_1 data_info">
+          <h2>Información de contacto</h2>
+          <form>
+            <div class="form_container">
+              <div class="input_wrap">
+                <label for="txtNombre">Nombre completo</label>
+                <input type="text" name="nombre" id="txtNombre" />
+              </div>
+              <div class="input_wrap">
+                <label for="txtEnail">Email</label>
+                <input type="Email" name="email" id="txtEnail" />
+              </div>
+              <div class="input_wrap">
+                <label for="txtTelefono">Telefono</label>
+                <input
+                  type="number"
+                  maxlength="10"
+                  minlength="10"
+                  name="telefono"
+                  id="txtTelefono"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="btnsContainer">
+          <div class="btns_wrap">
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnPrevStep"
+                onclick="prevStep('stepThree')"
+              >
+                Anterior
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnNextStep"
+                onclick="nextStep('stepThree')"
+              >
+                Siguiente
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="btns_wrap"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="stepFour" style="display: none">
+      <div class="header" id="circlesContainer">
+        <ul>
+          <li class="form_1_progressbar" id="circleInitial">
+            <div>
+              <p>1</p>
+            </div>
+          </li>
+          <li class="form_2_progressbar" id="circleOne">
+            <div>
+              <p>2</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleTwo">
+            <div>
+              <p>3</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleThree">
+            <div>
+              <p>4</p>
+            </div>
+          </li>
+          <li class="active form_3_progressbar" id="circleFour">
+            <div>
+              <p>5</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleFive">
+            <div>
+              <p>6</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="form_wrap">
+        <div class="form_1 data_info">
+          <h2>Información de contacto</h2>
+          <form>
+            <div class="form_container">
+              <div class="input_wrap">
+                <label for="txtNombre">Nombre completo</label>
+                <input type="text" name="nombre" id="txtNombre" />
+              </div>
+              <div class="input_wrap">
+                <label for="txtEnail">Email</label>
+                <input type="Email" name="email" id="txtEnail" />
+              </div>
+              <div class="input_wrap">
+                <label for="txtTelefono">Telefono</label>
+                <input
+                  type="number"
+                  maxlength="10"
+                  minlength="10"
+                  name="telefono"
+                  id="txtTelefono"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="btnsContainer">
+          <div class="btns_wrap">
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnPrevStep"
+                onclick="prevStep('stepFour')"
+              >
+                Anterior
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnNextStep"
+                onclick="nextStep('stepFour')"
+              >
+                Siguiente
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="btns_wrap"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="stepFive" style="display: none">
+      <div class="header" id="circlesContainer">
+        <ul>
+          <li class="form_1_progressbar" id="circleInitial">
+            <div>
+              <p>1</p>
+            </div>
+          </li>
+          <li class="form_2_progressbar" id="circleOne">
+            <div>
+              <p>2</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleTwo">
+            <div>
+              <p>3</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleThree">
+            <div>
+              <p>4</p>
+            </div>
+          </li>
+          <li class="form_3_progressbar" id="circleFour">
+            <div>
+              <p>5</p>
+            </div>
+          </li>
+          <li class="active form_3_progressbar" id="circleFive">
+            <div>
+              <p>6</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="form_wrap">
+        <div class="form_1 data_info">
+          <h2>Información de contacto</h2>
+          <form>
+            <div class="form_container">
+              <div class="input_wrap">
+                <label for="txtNombre">Nombre completo</label>
+                <input type="text" name="nombre" id="txtNombre" />
+              </div>
+              <div class="input_wrap">
+                <label for="txtEnail">Email</label>
+                <input type="Email" name="email" id="txtEnail" />
+              </div>
+              <div class="input_wrap">
+                <label for="txtTelefono">Telefono</label>
+                <input
+                  type="number"
+                  maxlength="10"
+                  minlength="10"
+                  name="telefono"
+                  id="txtTelefono"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="btnsContainer">
+          <div class="btns_wrap">
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                class="btn_next"
+                id="btnPrevStep"
+                onclick="prevStep('stepFive')"
+              >
+                Anterior
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+            <div class="common_btns form_1_btns">
+              <button
+                type="button"
+                disabled
+                style="background: gray"
+                class="btn_next"
+                id="btnNextStep"
+                onclick="nextStep('stepFive')"
+              >
+                Siguiente
+                <span class="icon">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="btns_wrap"></div>
+        </div>
+      </div>
+    </div>
+
     <script src="./js/form.js"></script>
   </body>
 </html>
