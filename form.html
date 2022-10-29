@@ -133,13 +133,15 @@
       </div>
       <div class="form_wrap">
         <div class="form_1 data_info">
-          <form>
+          <form action="" class="formulario" id="formulario">
             <div class="form_container">
               <h2>Información de contacto</h2>
-              <div class="input_wrap">
+              
+              <div class="input_wrap" id="grupo_nombre">
                 <label for="txtNombre">Nombre completo</label>
-                <input type="text" name="nombre" id="txtNombre" />
+                  <input type="text" name="nombre" id="txtNombre" />
               </div>
+            </div>
               <div class="input_wrap">
                 <label for="txtEnail">Email</label>
                 <input type="Email" name="email" id="txtEnail" />
@@ -175,7 +177,7 @@
             </div>
             <div class="common_btns form_1_btns">
               <button
-                type="button"
+                type="submit"
                 class="btn_next"
                 id="btnNextStep"
                 onclick="nextStep('stepOne')"
