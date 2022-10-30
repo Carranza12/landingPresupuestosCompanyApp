@@ -64,7 +64,7 @@ const prevStep=(paso_actual)=>{
     }
 }
 
-const formulario = document.getElementById('formulario');
+const formulario = document.getElementById('btnNextStep');
 const inputs = document.querySelectorAll('#formulario input');
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -110,11 +110,12 @@ input.addEventListener('keyup', validarFormulario);
 input.addEventListener('blur', validarFormulario);
 })
 
-formulario.addEventListener('submit', (e) =>{
-e.preventDefault();
-
+formulario.addEventListener('button', (e) =>{
+    e.preventDefault();
 if(campos.nombre && campos.email && campos.telefono){
-    formulario.reset();
+    
 }
+
+
 })
 
