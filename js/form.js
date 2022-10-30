@@ -14,6 +14,10 @@ const inputEmail = document.getElementById("txtEnail");
 const inputTelefono = document.getElementById("txtTelefono");
 //QUE TIPO DE TRABAJO NECESITAS?
 
+
+//MEDIDAS DE TERRENO
+const inputMedidas = document.getElementById("txtMedidas");
+
 const nextStep = (paso_actual) => {
   //PASO INICIAL
   if (paso_actual === "stepInitial") {
@@ -34,24 +38,55 @@ const nextStep = (paso_actual) => {
         "Campos Requeridos!",
         "Por favor rellena todos los campos",
         "error"
-      );
+      ); 
       return;
     }
-    document.getElementById("stepOne").style.display = "none";
-    document.getElementById("stepTwo").style.display = "block";
+    if (campos.nombre && campos.email && campos.telefono) {
+        document.getElementById("stepOne").style.display = "none";
+        document.getElementById("stepTwo").style.display = "block";
+    }
+    else{
+        Swal.fire(
+            "Campos Incorrectos!",
+            "Por favor rellena todos los campos de manera correcta",
+            "error"
+          );
+    }
+   
   }
+
+
   //QUE TIPO DE TRABAJO NECESITAS
   if (paso_actual === "stepTwo") {
     document.getElementById("stepTwo").style.display = "none";
     document.getElementById("stepThree").style.display = "block";
   }
   if (paso_actual === "stepThree") {
-    document.getElementById("stepThree").style.display = "none";
-    document.getElementById("stepFour").style.display = "block";
+    if(!inputMedidas.value ||
+        inputMedidas.value === " " ){
+        Swal.fire(
+            "Campos Requeridos!",
+            "Por favor rellena todos los campos",
+            "error"
+          ); 
+          return;
+    }
+    if(campos.medidas){
+        document.getElementById("stepThree").style.display = "none";
+        document.getElementById("stepFour").style.display = "block";
+    }
+ else{
+    Swal.fire(
+        "Campos Incorrectos!",
+        "Por favor rellena todos los campos de manera correcta",
+        "error"
+      );
+ }
+    
   }
-  if (paso_actual === "stepFour") {
-    document.getElementById("stepFour").style.display = "none";
-    document.getElementById("stepFive").style.display = "block";
+  if (paso_actual === "stepFour") { 
+        document.getElementById("stepFour").style.display = "none";
+        document.getElementById("stepFive").style.display = "block";
   }
   if (paso_actual === "stepFive") {
     document.getElementById("stepFive").style.display = "none";
@@ -89,12 +124,14 @@ const expresiones = {
   nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
   correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   telefono: /^\d{7,14}$/, // 7 a 14 numeros.
+  medidas: /^[a-zA-ZÀ-ÿ-Z0-9\s]{1,140}$/ //informacion de terreno
 };
 
 const campos = {
   nombre: false,
   email: false,
   telefono: false,
+  medidas: false,
 };
 
 const validarFormulario = (e) => {
@@ -108,6 +145,10 @@ const validarFormulario = (e) => {
     case "telefono":
       validarCampo(expresiones.telefono, e.target, "telefono");
       break;
+
+      case "medidas":
+        validarCampo(expresiones.medidas, e.target, "medidas");
+        break;
   }
 };
 
@@ -136,8 +177,3 @@ inputs.forEach((input) => {
   input.addEventListener("blur", validarFormulario);
 });
 
-formulario.addEventListener("button", (e) => {
-  e.preventDefault();
-  if (campos.nombre && campos.email && campos.telefono) {
-  }
-});
