@@ -72,34 +72,49 @@ const expresiones = {
 	telefono: /^\d{7,14}$/ // 7 a 14 numeros.
 }
 
+const campos={
+nombre: false,
+email: false,
+telefono: false
+}
 
 const validarFormulario = (e)=>{
     switch(e.target.name){
         case "nombre":
-        if(expresiones.nombre.test(e.target.value)){
-            document.getElementById('grupo_nombre').classList.remove('formulario__grupo-incorrecto');
-            document.getElementById('grupo_nombre').classList.add('formulario__grupo-correcto');
-        }
-        else{
-            document.getElementById('grupo_nombre').classList.add('formulario__grupo-incorrecto');
-        }
+        validarCampo(expresiones.nombre, e.target, 'nombre');
             break;
         case "email":
-
+            validarCampo(expresiones.correo, e.target, 'email');
             break;
         case "telefono":
-
+            validarCampo(expresiones.telefono, e.target, 'telefono');
             break;
     }
    }
    
-
+const validarCampo = (expresion, input, campo)=>{
+    if(expresion.test(input.value)){
+        document.getElementById(`grupo_${campo}`).classList.remove('formulario__grupo-incorrecto');
+        document.getElementById(`grupo_${campo}`).classList.add('formulario__grupo-correcto');
+        campos[campo]=true;
+    }
+    else{
+        document.getElementById(`grupo_${campo}`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`grupo_${campo}`).classList.remove('formulario__grupo-correcto');
+        campos[campo]=false;
+    }
+}
 
 inputs.forEach((input)=>{
 input.addEventListener('keyup', validarFormulario);
 input.addEventListener('blur', validarFormulario);
 })
+
 formulario.addEventListener('submit', (e) =>{
 e.preventDefault();
+
+if(campos.nombre && campos.email && campos.telefono){
+    formulario.reset();
+}
 })
 
