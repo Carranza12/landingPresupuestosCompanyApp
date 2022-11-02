@@ -70,9 +70,9 @@
                 id="btnPrevStep"
                 onclick="prevStep('none')"
               >
+              <ion-icon name="arrow-back-outline"></ion-icon>
                 Anterior
                 <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </span>
               </button>
             </div>
@@ -133,21 +133,23 @@
       </div>
       <div class="form_wrap">
         <div class="form_1 data_info">
-          <h2>Información de contacto</h2>
-          <form>
+          <form action="" class="formulario" id="formulario">
             <div class="form_container">
-              <div class="input_wrap">
+              <h2>Información de contacto</h2>
+              
+              <div class="input_wrap" id="grupo_nombre">
                 <label for="txtNombre">Nombre completo</label>
-                <input type="text" name="nombre" id="txtNombre" />
+                  <input type="text" name="nombre" id="txtNombre" />
               </div>
-              <div class="input_wrap">
+            </div>
+              <div class="input_wrap" id="grupo_email">
                 <label for="txtEnail">Email</label>
                 <input type="Email" name="email" id="txtEnail" />
               </div>
-              <div class="input_wrap">
+              <div class="input_wrap" id="grupo_telefono">
                 <label for="txtTelefono">Telefono</label>
                 <input
-                  type="number"
+                  type="text"
                   maxlength="10"
                   minlength="10"
                   name="telefono"
@@ -167,9 +169,9 @@
                 id="btnPrevStep"
                 onclick="prevStep('stepOne')"
               >
+              <ion-icon name="arrow-back-outline"> </ion-icon>
                 Anterior
                 <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </span>
               </button>
             </div>
@@ -232,13 +234,39 @@
             -->
       <div class="form_wrap">
         <div class="form_1 data_info">
-          <h2>¿Qué tipo de trabajo necesitas?</h2>
+         
           <form>
             <div class="form_container">
-              <div class="input_wrap">
-                <label for="txtNombre">Ampliación de una casa/habitación</label>
-                <input type="checkbox" name="nombre" id="txtNombre" />
-              </div>
+              <h2>¿Qué tipo de trabajo necesitas?</h2>
+                <div class="form-check">
+                  <input type="radio" id="amp" name="tipoTrabajo" value="Ampliación de una casa/habitación"
+                  checked>
+                  <label class="form-check-label" for="defaultCheck1">
+                    Ampliación de una casa/habitación
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input type="radio" id="rec" name="tipoTrabajo" value="Reconstruccion de una habitacion/casa">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Reconstruccion de una habitacion/casa
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input type="radio" id="niv" name="tipoTrabajo" value="Nivelacion de terreno">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Nivelacion de terreno
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input type="radio" id="con" name="tipoTrabajo" value="Contruccion desde cero">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Contruccion desde cero
+                  </label>
+                </div>
+
               <!-- 
 
                 LISTA DE LOS DEMAS CHECKBOX:
@@ -249,9 +277,30 @@
               -->
             </div>
 
-            <h2>¿Cuántas unidades?</h2>
-            <input type="checkbox">
-            <label for="">1 unidad</label>
+            
+            <div class="form_container">
+              <h2>¿Cuántas unidades?</h2>
+              <div class="form-check">
+                <input type="radio" id="" name="Unidades" value="1" checked>
+              <label class="form-check-label" for="defaultCheck1">
+                1 Unidad
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input type="radio" id="" name="Unidades" value="2">
+              <label class="form-check-label" for="defaultCheck1">
+                Entre 2 y 4 Unidades
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input type="radio" id="" name="Unidades" value="4">
+              <label class="form-check-label" for="defaultCheck1">
+                Mas de 4 Unidades
+              </label>
+            </div>
+          </div>
             <!-- DEMAS ITEMS POR AGREGAR:
             *Entre 2 y 4 Unidades
             *Más de 4 Unidades
@@ -268,9 +317,9 @@
                 id="btnPrevStep"
                 onclick="prevStep('stepTwo')"
               >
+              <ion-icon name="arrow-back-outline"></ion-icon>
                 Anterior
                 <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </span>
               </button>
             </div>
@@ -331,12 +380,12 @@
       </div>
       <div class="form_wrap">
         <div class="form_1 data_info">
-          <h2>Especifica las medidas del terreno</h2>
-          <form>
+
+          <form id="formulario">
             <div class="form_container">
-              <div class="input_wrap">
-          
-                <input type="text" name="nombre" id="txtNombre" />
+              <h2>Especifica las medidas del terreno</h2>
+              <div class="input_wrap" id="grupo_medidas">
+                <input type="text" name="medidas" id="txtMedidas" />
               </div>
             
             </div>
@@ -352,9 +401,9 @@
                 id="btnPrevStep"
                 onclick="prevStep('stepThree')"
               >
+              <ion-icon name="arrow-back-outline"> </ion-icon>
                 Anterior
                 <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </span>
               </button>
             </div>
@@ -415,27 +464,65 @@
       </div>
       <div class="form_wrap">
         <div class="form_1 data_info">
-          <h2>¿cual es tu presupeusto?</h2>
-          <form>
-            <div class="form_container">
-              <div class="input_wrap">
-                <input type="checkbox" name="nombre" id="txtNombre" />
-                <label for="txtNombre">menos de 1,000</label>
-              </div>
-              <!-- DEMAS ITEMS POR AGREGAR
-                    1,000 a 2,500
-                    2,500 a ,5000
-                    5,000 a 15,000
-                    15,000 a 30,000
-                    30,000 a 50,000
-                    50,0000 a 100,000
-                    100,000 a 500,000
-                    mas de 500,000
-              -->
-            </div>
-          </form>
+      <div class="form_container">
+        <h2>¿Cual es tu presupuesto?</h2>
+        <div class="form-check">
+          <input type="radio" id="" name="presupuesto" value="1" checked>
+          <label class="form-check-label" for="defaultCheck1">
+            $1,000 a $2,500
+          </label>
         </div>
 
+        <div class="form-check">
+          <input type="radio" id="" name="presupuesto" value="2">
+          <label class="form-check-label" for="defaultCheck1">
+            $2,500 a $5,000
+          </label>
+        </div>
+          
+        <div class="form-check">
+          <input type="radio" id="" name="presupuesto" value="3">
+          <label class="form-check-label" for="defaultCheck1">
+            $5,000 a $15,000
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input type="radio" id="" name="presupuesto" value="4">
+          <label class="form-check-label" for="defaultCheck1">
+            $15,000 a $30,000
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input type="radio" id="" name="presupuesto" value="5">
+          <label class="form-check-label" for="defaultCheck1">
+            $30,000 a $50,000
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input type="radio" id="" name="presupuesto" value="6">
+          <label class="form-check-label" for="defaultCheck1">
+            $50,0000 a $100,000
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input type="radio" id="" name="presupuesto" value="7">
+          <label class="form-check-label" for="defaultCheck1">
+            $100,000 a $500,000
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input type="radio" id="" name="presupuesto" value="8">
+          <label class="form-check-label" for="defaultCheck1">
+            mas de $500,000
+          </label>
+        </div>
+      </div>
+        </div>
         <div class="btnsContainer">
           <div class="btns_wrap">
             <div class="common_btns form_1_btns">
@@ -445,9 +532,10 @@
                 id="btnPrevStep"
                 onclick="prevStep('stepFour')"
               >
-                Anterior
+              <ion-icon name="arrow-back-outline"></ion-icon>
+                 Anterior
                 <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                  
                 </span>
               </button>
             </div>
@@ -510,10 +598,10 @@
         <div class="form_1 data_info">
           <h2>¿Algo más que añadir?</h2>
           <form>
-            <div class="form_container">
+            <div class="form_container-U">
               <div class="input_wrap">
                
-                <textarea row="4" style="width:438px;height:200px;" placeholder="especifica todos los detalles de tu presupuesto"></textarea>
+                <textarea row="4" style="width:438px;height:200px;" placeholder="Especifica todos los detalles de tu presupuesto"></textarea>
               </div>
               
             </div>
@@ -529,9 +617,9 @@
                 id="btnPrevStep"
                 onclick="prevStep('stepFive')"
               >
+              <ion-icon name="arrow-back-outline"> </ion-icon>
                 Anterior
                 <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </span>
               </button>
             </div>
@@ -591,5 +679,7 @@ se pondran en contacto contigo cuando se autorize un presupuesto.
     </div>
 
     <script src="./js/form.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   </body>
 </html>
