@@ -12,6 +12,7 @@ const btnPrevStep = window.document.getElementById("btnPrevStep");
 const inputNombre = document.getElementById("txtNombre");
 const inputEmail = document.getElementById("txtEnail");
 const inputTelefono = document.getElementById("txtTelefono");
+const inputComentarios = document.getElementById("txtComentarios");
 //QUE TIPO DE TRABAJO NECESITAS?
 
 
@@ -60,7 +61,11 @@ const nextStep = (paso_actual) => {
   if (paso_actual === "stepTwo") {
     document.getElementById("stepTwo").style.display = "none";
     document.getElementById("stepThree").style.display = "block";
+    
   }
+
+
+
   if (paso_actual === "stepThree") {
     if(!inputMedidas.value ||
         inputMedidas.value === " " ){
@@ -80,17 +85,29 @@ const nextStep = (paso_actual) => {
         "Campos Incorrectos!",
         "Por favor rellena todos los campos de manera correcta",
         "error"
-      );
+      ); 
  }
-    
   }
+
   if (paso_actual === "stepFour") { 
         document.getElementById("stepFour").style.display = "none";
         document.getElementById("stepFive").style.display = "block";
   }
-  if (paso_actual === "stepFive") {
+  if (paso_actual === "stepFive") {  
+    if(!inputComentarios.value ||
+      inputComentarios.value === " " ){
+      Swal.fire(
+          "Campos Requeridos!",
+          "Por favor rellena todos los campos",
+          "error"
+        ); 
+        return;
+  }
+  else{
+    guardarDatos();
     document.getElementById("stepFive").style.display = "none";
     document.getElementById("stepEnd").style.display = "block";
+  }
   }
 };
 
@@ -177,3 +194,57 @@ inputs.forEach((input) => {
   input.addEventListener("blur", validarFormulario);
 });
 
+
+
+
+
+
+//FUNCIONALIDAD DE LOS INPUTS
+function guardarDatos(){
+  //DATOS DEL USUARIO
+  var nombreGuardar = inputNombre.value;
+  var enailGuardar = inputEmail.value;
+  var telefonoGuardar = inputTelefono.value;
+
+  //TIPO DE TRABAJO
+  var radiotp = document.getElementsByName('tipoTrabajo');
+  for(i = 0; i < radiotp.length; i++) {
+    if(radiotp[i].checked){
+      var tipoTrabajoGuardar = radiotp[i].value;
+    }
+}
+//TIPO DE UNIDADES
+var radiouni = document.getElementsByName('Unidades');
+for(i = 0; i < radiouni.length; i++) {
+  if(radiouni[i].checked){
+    var unidadesGuardar = radiouni[i].value;
+  }
+}
+
+//MEDIDAS DEL TERRENO
+var medidasGuardar = inputMedidas.value;
+
+//PRESUPUESTO
+var radioPres = document.getElementsByName('presupuesto');
+for(i = 0; i < radioPres.length; i++) {
+  if(radioPres[i].checked){
+    var presupuestoGuardar = radioPres[i].value;
+  }
+}
+
+//AGREGAR COMENTARIOS
+var comentariosGuardar = inputComentarios.value;
+//OBJETO
+  const arreglo = {
+    "nombre": nombreGuardar,
+    "email": enailGuardar,
+    "telefono": telefonoGuardar,
+    "tipo_trabajo": tipoTrabajoGuardar,
+    "unidades": unidadesGuardar,
+    "medidas": medidasGuardar,
+    "presupuesto": presupuestoGuardar,
+    "comentarios": comentariosGuardar
+  }
+
+  console.log(arreglo);
+}
