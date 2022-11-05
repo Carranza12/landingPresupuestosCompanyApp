@@ -13,11 +13,13 @@ const inputNombre = document.getElementById("txtNombre");
 const inputEmail = document.getElementById("txtEnail");
 const inputTelefono = document.getElementById("txtTelefono");
 const inputComentarios = document.getElementById("txtComentarios");
-//QUE TIPO DE TRABAJO NECESITAS?
-
+//Unidades que necesitas?
+const inputUnidades = document.getElementById("txtUnidades");
 
 //MEDIDAS DE TERRENO
 const inputMedidas = document.getElementById("txtMedidas");
+
+
 
 const nextStep = (paso_actual) => {
   //PASO INICIAL
@@ -59,9 +61,33 @@ const nextStep = (paso_actual) => {
 
   //QUE TIPO DE TRABAJO NECESITAS
   if (paso_actual === "stepTwo") {
-    document.getElementById("stepTwo").style.display = "none";
-    document.getElementById("stepThree").style.display = "block";
-    
+    if(!inputUnidades.value ||
+      inputUnidades.value === " " ){
+        Swal.fire(
+          "Campos Requeridos!",
+          "Por favor rellena todos los campos",
+          "error"
+        ); 
+        return;
+      }
+      if(inputUnidades.value > 10){
+        Swal.fire(
+          "Campos Incorrectos!",
+          "Solo se pueden elegir 10 unidades maximo",
+          "error"
+        ); 
+      }
+      else if(inputUnidades.value >=1 && inputUnidades.value <=10 && campos.unidades){
+        document.getElementById("stepTwo").style.display = "none";
+        document.getElementById("stepThree").style.display = "block";
+      }
+      else{
+        Swal.fire(
+          "Campos Incorrectos!",
+          "Por favor rellena todos los campos de manera correcta",
+          "error"
+        ); 
+      }
   }
 
 
@@ -104,6 +130,11 @@ const nextStep = (paso_actual) => {
         return;
   }
   else{
+    Swal.fire(
+      "Cotizacion Generada!",
+      "Tu cotizacion ha sido generada con exito",
+      "success"
+    ); 
     guardarDatos();
     document.getElementById("stepFive").style.display = "none";
     document.getElementById("stepEnd").style.display = "block";
@@ -138,10 +169,11 @@ const prevStep = (paso_actual) => {
 const formulario = document.getElementById("btnNextStep");
 const inputs = document.querySelectorAll("#formulario input");
 const expresiones = {
-  nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+  nombre: /^[a-zA-ZÀ-ÿ\s]{7,50}$/, // Letras y espacios, pueden llevar acentos.
   correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-  telefono: /^\d{7,14}$/, // 7 a 14 numeros.
-  medidas: /^[a-zA-ZÀ-ÿ-Z0-9\s]{1,140}$/ //informacion de terreno
+  telefono: /^\d{10}$/, // 7 a 14 numeros.
+  medidas: /^[a-zA-ZÀ-ÿ-Z0-9\s]{1,140}$/, //informacion de terreno
+  unidades: /^[1-9][0-9]*$/, // 1 a 2 numeros.
 };
 
 const campos = {
@@ -149,6 +181,7 @@ const campos = {
   email: false,
   telefono: false,
   medidas: false,
+  unidades: false
 };
 
 const validarFormulario = (e) => {
@@ -166,6 +199,10 @@ const validarFormulario = (e) => {
       case "medidas":
         validarCampo(expresiones.medidas, e.target, "medidas");
         break;
+
+        case "unidades":
+          validarCampo(expresiones.unidades, e.target, "unidades");
+          break;
   }
 };
 
@@ -205,20 +242,16 @@ function guardarDatos(){
   var nombreGuardar = inputNombre.value;
   var enailGuardar = inputEmail.value;
   var telefonoGuardar = inputTelefono.value;
-
+  
+  //UNIDADES
+    var unidadesGuardar = inputUnidades.value;
+ 
   //TIPO DE TRABAJO
   var radiotp = document.getElementsByName('tipoTrabajo');
   for(i = 0; i < radiotp.length; i++) {
     if(radiotp[i].checked){
       var tipoTrabajoGuardar = radiotp[i].value;
     }
-}
-//TIPO DE UNIDADES
-var radiouni = document.getElementsByName('Unidades');
-for(i = 0; i < radiouni.length; i++) {
-  if(radiouni[i].checked){
-    var unidadesGuardar = radiouni[i].value;
-  }
 }
 
 //MEDIDAS DEL TERRENO
@@ -234,16 +267,17 @@ for(i = 0; i < radioPres.length; i++) {
 
 //AGREGAR COMENTARIOS
 var comentariosGuardar = inputComentarios.value;
+
 //OBJETO
   const arreglo = {
-    "nombre": nombreGuardar,
+    "full_name": nombreGuardar,
     "email": enailGuardar,
-    "telefono": telefonoGuardar,
-    "tipo_trabajo": tipoTrabajoGuardar,
-    "unidades": unidadesGuardar,
-    "medidas": medidasGuardar,
-    "presupuesto": presupuestoGuardar,
-    "comentarios": comentariosGuardar
+    "phone": telefonoGuardar,
+    "type_job": tipoTrabajoGuardar,
+    "how_many_units": unidadesGuardar,
+    "land_measures": medidasGuardar,
+    "budget": presupuestoGuardar,
+    "details": comentariosGuardar
   }
 
   console.log(arreglo);
