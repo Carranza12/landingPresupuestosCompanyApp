@@ -220,12 +220,41 @@ if(!inputUnidades.value ||
       return;
     }
  //VALIDACION FINAL
-if(campos.nombre && campos.email && campos.telefono && campos.medidas && inputUnidades.value >=1 && inputUnidades.value <=10 && campos.unidades){
-    guardarDatos();
-    Swal.fire(
-      "Su solicitud se ha enviado correctamente!",
-      "En algunos dias recibirá noticias de nosotros... ",
-      "success"
-    );
-  }
+if(campos.nombre && campos.email && campos.telefono && campos.medidas && inputUnidades.value >=1 && inputUnidades.value <=10 && campos.unidades){  
+    Swal
+    .fire({
+        title: "Cotizacion Pendiente",
+        text: "¿Desea solicitar esta cotizacion?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: "Sí, Solicitar",
+        cancelButtonText: "Cancelar",
+        allowOutsideClick: false,
+        allowEscapeKey: false
+    })
+    .then(resultado => {
+        if (resultado.value) {
+            // Hicieron click en "Sí"    
+            Swal.fire({
+              title: "Solicitud completada",
+              text: "Nuestro equipo se pondra en contacto con usted",
+              icon:"success",
+              confirmButtonText: "Aceptar",
+              allowOutsideClick: false,
+        allowEscapeKey: false
+            }).then(respuesta =>{
+              //Aceptaron el success
+              if(respuesta.value){
+                location.reload();
+              }
+            });
+            guardarDatos();
+            console.log("*se solicito con exito*");
+        } else {
+            // Dijeron que no
+            location.reload();
+            console.log("*Se cancelo la solicitud*");
+        }
+    });
+}
 }
