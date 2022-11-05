@@ -1,4 +1,4 @@
-import { saveClienteEnEspera } from "./firebase";
+import { saveClienteEnEspera } from "./firebase.js";
 
 const btnNextStep = window.document.getElementById("btnNextStep");
 const circlesContainer = window.document.getElementById("circlesContainer");
@@ -23,150 +23,7 @@ const inputMedidas = document.getElementById("txtMedidas");
 
 
 
-const nextStep = (paso_actual) => {
-  //PASO INICIAL
-  if (paso_actual === "stepInitial") {
-    document.getElementById("stepInitial").style.display = "none";
-    document.getElementById("stepOne").style.display = "block";
-  }
-  //INFORMACION DE CONTACTO
-  if (paso_actual === "stepOne") {
-    if (
-      !inputNombre.value ||
-      inputNombre.value === " " ||
-      !inputEmail.value ||
-      inputEmail.value === " " ||
-      !inputTelefono.value ||
-      inputTelefono.value === " "
-    ) {
-      Swal.fire(
-        "Campos Requeridos!",
-        "Por favor rellena todos los campos",
-        "error"
-      ); 
-      return;
-    }
-    if (campos.nombre && campos.email && campos.telefono) {
-        document.getElementById("stepOne").style.display = "none";
-        document.getElementById("stepTwo").style.display = "block";
-    }
-    else{
-        Swal.fire(
-            "Campos Incorrectos!",
-            "Por favor rellena todos los campos de manera correcta",
-            "error"
-          );
-    }
-   
-  }
 
-
-  //QUE TIPO DE TRABAJO NECESITAS
-  if (paso_actual === "stepTwo") {
-    if(!inputUnidades.value ||
-      inputUnidades.value === " " ){
-        Swal.fire(
-          "Campos Requeridos!",
-          "Por favor rellena todos los campos",
-          "error"
-        ); 
-        return;
-      }
-      if(inputUnidades.value > 10){
-        Swal.fire(
-          "Campos Incorrectos!",
-          "Solo se pueden elegir 10 unidades maximo",
-          "error"
-        ); 
-      }
-      else if(inputUnidades.value >=1 && inputUnidades.value <=10 && campos.unidades){
-        document.getElementById("stepTwo").style.display = "none";
-        document.getElementById("stepThree").style.display = "block";
-      }
-      else{
-        Swal.fire(
-          "Campos Incorrectos!",
-          "Por favor rellena todos los campos de manera correcta",
-          "error"
-        ); 
-      }
-  }
-
-
-
-  if (paso_actual === "stepThree") {
-    if(!inputMedidas.value ||
-        inputMedidas.value === " " ){
-        Swal.fire(
-            "Campos Requeridos!",
-            "Por favor rellena todos los campos",
-            "error"
-          ); 
-          return;
-    }
-    if(campos.medidas){
-        document.getElementById("stepThree").style.display = "none";
-        document.getElementById("stepFour").style.display = "block";
-    }
- else{
-    Swal.fire(
-        "Campos Incorrectos!",
-        "Por favor rellena todos los campos de manera correcta",
-        "error"
-      ); 
- }
-  }
-
-  if (paso_actual === "stepFour") { 
-        document.getElementById("stepFour").style.display = "none";
-        document.getElementById("stepFive").style.display = "block";
-  }
-  if (paso_actual === "stepFive") {  
-    if(!inputComentarios.value ||
-      inputComentarios.value === " " ){
-      Swal.fire(
-          "Campos Requeridos!",
-          "Por favor rellena todos los campos",
-          "error"
-        ); 
-        return;
-  }
-  else{
-    Swal.fire(
-      "Cotizacion Generada!",
-      "Tu cotizacion ha sido generada con exito",
-      "success"
-    ); 
-    guardarDatos();
-    document.getElementById("stepFive").style.display = "none";
-    document.getElementById("stepEnd").style.display = "block";
-  }
-  }
-};
-
-const prevStep = (paso_actual) => {
-  if (paso_actual === "stepOne") {
-    document.getElementById("stepOne").style.display = "none";
-    document.getElementById("stepInitial").style.display = "block";
-  }
-
-  if (paso_actual === "stepTwo") {
-    document.getElementById("stepTwo").style.display = "none";
-    document.getElementById("stepOne").style.display = "block";
-  }
-  if (paso_actual === "stepThree") {
-    document.getElementById("stepThree").style.display = "none";
-    document.getElementById("stepTwo").style.display = "block";
-  }
-  if (paso_actual === "stepFour") {
-    document.getElementById("stepFour").style.display = "none";
-    document.getElementById("stepThree").style.display = "block";
-  }
-  if (paso_actual === "stepFive") {
-    document.getElementById("stepFive").style.display = "none";
-    document.getElementById("stepFour").style.display = "block";
-  }
-};
 
 const formulario = document.getElementById("btnNextStep");
 const inputs = document.querySelectorAll("#formulario input");
@@ -183,7 +40,7 @@ const campos = {
   email: false,
   telefono: false,
   medidas: false,
-  unidades: false
+  unidades: false,
 };
 
 const validarFormulario = (e) => {
@@ -198,13 +55,13 @@ const validarFormulario = (e) => {
       validarCampo(expresiones.telefono, e.target, "telefono");
       break;
 
-      case "medidas":
-        validarCampo(expresiones.medidas, e.target, "medidas");
-        break;
+    case "medidas":
+      validarCampo(expresiones.medidas, e.target, "medidas");
+      break;
 
-        case "unidades":
-          validarCampo(expresiones.unidades, e.target, "unidades");
-          break;
+    case "unidades":
+      validarCampo(expresiones.unidades, e.target, "unidades");
+      break;
   }
 };
 
@@ -233,54 +90,82 @@ inputs.forEach((input) => {
   input.addEventListener("blur", validarFormulario);
 });
 
-
-
-
-
-
 //FUNCIONALIDAD DE LOS INPUTS
-function guardarDatos(){
+function guardarDatos() {
   //DATOS DEL USUARIO
   var nombreGuardar = inputNombre.value;
   var enailGuardar = inputEmail.value;
   var telefonoGuardar = inputTelefono.value;
-  
+
   //UNIDADES
-    var unidadesGuardar = inputUnidades.value;
- 
+  var unidadesGuardar = inputUnidades.value;
+
   //TIPO DE TRABAJO
-  var radiotp = document.getElementsByName('tipoTrabajo');
-  for(i = 0; i < radiotp.length; i++) {
-    if(radiotp[i].checked){
+  var radiotp = document.getElementsByName("tipoTrabajo");
+  for (let i = 0; i < radiotp.length; i++) {
+    if (radiotp[i].checked) {
       var tipoTrabajoGuardar = radiotp[i].value;
     }
-}
-
-//MEDIDAS DEL TERRENO
-var medidasGuardar = inputMedidas.value;
-
-//PRESUPUESTO
-var radioPres = document.getElementsByName('presupuesto');
-for(i = 0; i < radioPres.length; i++) {
-  if(radioPres[i].checked){
-    var presupuestoGuardar = radioPres[i].value;
   }
-}
 
-//AGREGAR COMENTARIOS
-var comentariosGuardar = inputComentarios.value;
+  //MEDIDAS DEL TERRENO
+  var medidasGuardar = inputMedidas.value;
 
-//OBJETO
+  //PRESUPUESTO
+  var radioPres = document.getElementsByName("presupuesto");
+  for (let i = 0; i < radioPres.length; i++) {
+    if (radioPres[i].checked) {
+      var presupuestoGuardar = radioPres[i].value;
+    }
+  }
+
+  //AGREGAR COMENTARIOS
+  var comentariosGuardar = inputComentarios.value;
+
+  //OBJETO
   const arreglo = {
-    "full_name": nombreGuardar,
-    "email": enailGuardar,
-    "phone": telefonoGuardar,
-    "type_job": tipoTrabajoGuardar,
-    "how_many_units": unidadesGuardar,
-    "land_measures": medidasGuardar,
-    "budget": presupuestoGuardar,
-    "details": comentariosGuardar
+    full_name: nombreGuardar,
+    email: enailGuardar,
+    phone: telefonoGuardar,
+    type_job: tipoTrabajoGuardar,
+    how_many_units: unidadesGuardar,
+    land_measures: medidasGuardar,
+    budget: presupuestoGuardar,
+    details: comentariosGuardar,
+  };
+
+   saveClienteEnEspera(arreglo)
+}
+
+document.getElementById("btnCREAR").addEventListener("click", function () {
+  if (
+    !inputNombre.value ||
+    inputNombre.value === " " ||
+    !inputEmail.value ||
+    inputEmail.value === " " ||
+    !inputTelefono.value ||
+    inputTelefono.value === " " ||
+    !inputUnidades.value ||
+    inputUnidades.value === " " ||
+    !inputMedidas.value ||
+    inputMedidas.value === " " ||
+    !inputComentarios.value ||
+    inputComentarios.value === " "
+  ) {
+    Swal.fire(
+      "Campos Requeridos!",
+      "Por favor rellena todos los campos",
+      "error"
+    );
+    return;
   }
 
-saveClienteEnEspera(arreglo);
-}
+  guardarDatos();
+  Swal.fire(
+    "Su solicitud se ha enviado correctamente!",
+    "En algunos dias recibirá noticias de nosotros... ",
+    "success"
+  );
+  
+ 
+});

@@ -1,5 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-import { getFirestore, collection, addDoc} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"
+import { getFirestore, collection, addDoc, doc, setDoc} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"
+
+
+// Add a new document in collection "cities"
 
 const firebaseConfig = {
   apiKey: "AIzaSyCoSL0XlHNIxWrrnB3jM7txNOXbZUtq9vE",
@@ -11,10 +14,13 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
+const document = {
 
-export const saveClienteEnEspera=(data)=>{
-   const res = addDoc(collection(db, 'clientes_en_espera', data));
-   console.log(res);
+}
+
+export const saveClienteEnEspera = (data)=>{
+  addDoc(collection(db,'clientes_en_espera'), data)
+ 
 
 }
 

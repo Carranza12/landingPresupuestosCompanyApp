@@ -3,6 +3,9 @@
   <head>
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/form.css" />
+    
+    <script type="module" src="./js/firebase.js" ></script>
+    <script  type="module" src="./js/form.js" ></script>
 
     <script
       type="module"
@@ -10,41 +13,8 @@
     ></script>
   </head>
   <body>
-    <div class="wrapper" id="stepInitial">
-      <div class="header" id="circlesContainer">
-        <ul>
-          <li class="active form_1_progressbar" id="circleInitial">
-            <div>
-              <p>1</p>
-            </div>
-          </li>
-          <li class="form_2_progressbar" id="circleOne">
-            <div>
-              <p>2</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleTwo">
-            <div>
-              <p>3</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleThree">
-            <div>
-              <p>4</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFour">
-            <div>
-              <p>5</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFive">
-            <div>
-              <p>6</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <div class="wrapper" id="stepInitial" style="height: 100vh;">
+     
       <div class="form_wrap">
         <div class="form_1 data_info">
           <h2>Bienvenido al cotizador online!</h2>
@@ -62,75 +32,28 @@
         <div class="btnsContainer">
           <div class="btns_wrap">
             <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                disabled
-                style="background: gray"
+              <a
                 class="btn_next"
-                id="btnPrevStep"
-                onclick="prevStep('none')"
+
+                href="#stepOne"
               >
-              <ion-icon name="arrow-back-outline"></ion-icon>
-                Anterior
+            
+                EMPEZAR
                 <span class="icon">
                 </span>
-              </button>
+              </a>
             </div>
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnNextStep"
-                onclick="nextStep('stepInitial')"
-              >
-                Siguiente
-                <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
-                </span>
-              </button>
-            </div>
+         
           </div>
 
           <div class="btns_wrap"></div>
         </div>
+         
       </div>
     </div>
 
-    <div class="wrapper" id="stepOne" style="display: none">
-      <div class="header" id="circlesContainer">
-        <ul>
-          <li class="form_1_progressbar" id="circleInitial">
-            <div>
-              <p>1</p>
-            </div>
-          </li>
-          <li class="active form_2_progressbar" id="circleOne">
-            <div>
-              <p>2</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleTwo">
-            <div>
-              <p>3</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleThree">
-            <div>
-              <p>4</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFour">
-            <div>
-              <p>5</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFive">
-            <div>
-              <p>6</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <div class="wrapper" id="stepOne" >
+    
       <div class="form_wrap">
         <div class="form_1 data_info">
           <form action="" class="formulario" id="formulario">
@@ -159,78 +82,15 @@
               </div>
             </div>
           </form>
+          
         </div>
 
-        <div class="btnsContainer">
-          <div class="btns_wrap">
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnPrevStep"
-                onclick="prevStep('stepOne')"
-              >
-              <ion-icon name="arrow-back-outline"> </ion-icon>
-                Anterior
-                <span class="icon">
-                </span>
-              </button>
-            </div>
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnNextStep"
-                onclick="nextStep('stepOne')"
-              >
-                Siguiente
-                <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div class="btns_wrap"></div>
-        </div>
+     
       </div>
     </div>
 
-    <div class="wrapper" id="stepTwo" style="display: none">
-      <div class="header" id="circlesContainer">
-        <ul>
-          <li class="form_1_progressbar" id="circleInitial">
-            <div>
-              <p>1</p>
-            </div>
-          </li>
-          <li class="form_2_progressbar" id="circleOne">
-            <div>
-              <p>2</p>
-            </div>
-          </li>
-          <li class="active form_3_progressbar" id="circleTwo">
-            <div>
-              <p>3</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleThree">
-            <div>
-              <p>4</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFour">
-            <div>
-              <p>5</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFive">
-            <div>
-              <p>6</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <div class="wrapper d-none" id="stepTwo" >
+     
       <!-- Formulario
             -->
       <div class="form_wrap">
@@ -287,76 +147,12 @@
           </form>
         </div>
 
-        <div class="btnsContainer">
-          <div class="btns_wrap">
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnPrevStep"
-                onclick="prevStep('stepTwo')"
-              >
-              <ion-icon name="arrow-back-outline"></ion-icon>
-                Anterior
-                <span class="icon">
-                </span>
-              </button>
-            </div>
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnNextStep"
-                onclick="nextStep('stepTwo')"
-              >
-                Siguiente
-                <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div class="btns_wrap"></div>
-        </div>
+       
       </div>
     </div>
 
-    <div class="wrapper" id="stepThree" style="display: none">
-      <div class="header" id="circlesContainer">
-        <ul>
-          <li class="form_1_progressbar" id="circleInitial">
-            <div>
-              <p>1</p>
-            </div>
-          </li>
-          <li class="form_2_progressbar" id="circleOne">
-            <div>
-              <p>2</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleTwo">
-            <div>
-              <p>3</p>
-            </div>
-          </li>
-          <li class="active form_3_progressbar" id="circleThree">
-            <div>
-              <p>4</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFour">
-            <div>
-              <p>5</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFive">
-            <div>
-              <p>6</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <div class="wrapper d-none" id="stepThree" >
+      
       <div class="form_wrap">
         <div class="form_1 data_info">
 
@@ -371,76 +167,12 @@
           </form>
         </div>
 
-        <div class="btnsContainer">
-          <div class="btns_wrap">
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnPrevStep"
-                onclick="prevStep('stepThree')"
-              >
-              <ion-icon name="arrow-back-outline"> </ion-icon>
-                Anterior
-                <span class="icon">
-                </span>
-              </button>
-            </div>
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnNextStep"
-                onclick="nextStep('stepThree')"
-              >
-                Siguiente
-                <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div class="btns_wrap"></div>
-        </div>
+      
       </div>
     </div>
 
-    <div class="wrapper" id="stepFour" style="display: none">
-      <div class="header" id="circlesContainer">
-        <ul>
-          <li class="form_1_progressbar" id="circleInitial">
-            <div>
-              <p>1</p>
-            </div>
-          </li>
-          <li class="form_2_progressbar" id="circleOne">
-            <div>
-              <p>2</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleTwo">
-            <div>
-              <p>3</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleThree">
-            <div>
-              <p>4</p>
-            </div>
-          </li>
-          <li class="active form_3_progressbar" id="circleFour">
-            <div>
-              <p>5</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFive">
-            <div>
-              <p>6</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <div class="wrapper d-none" id="stepFour" >
+      
       <div class="form_wrap">
         <div class="form_1 data_info">
       <div class="form_container">
@@ -502,77 +234,12 @@
         </div>
       </div>
         </div>
-        <div class="btnsContainer">
-          <div class="btns_wrap">
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnPrevStep"
-                onclick="prevStep('stepFour')"
-              >
-              <ion-icon name="arrow-back-outline"></ion-icon>
-                 Anterior
-                <span class="icon">
-                  
-                </span>
-              </button>
-            </div>
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnNextStep"
-                onclick="nextStep('stepFour')"
-              >
-                Siguiente
-                <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div class="btns_wrap"></div>
-        </div>
+      
       </div>
     </div>
 
-    <div class="wrapper" id="stepFive" style="display: none">
-      <div class="header" id="circlesContainer">
-        <ul>
-          <li class="form_1_progressbar" id="circleInitial">
-            <div>
-              <p>1</p>
-            </div>
-          </li>
-          <li class="form_2_progressbar" id="circleOne">
-            <div>
-              <p>2</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleTwo">
-            <div>
-              <p>3</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleThree">
-            <div>
-              <p>4</p>
-            </div>
-          </li>
-          <li class="form_3_progressbar" id="circleFour">
-            <div>
-              <p>5</p>
-            </div>
-          </li>
-          <li class="active form_3_progressbar" id="circleFive">
-            <div>
-              <p>6</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <div class="wrapper d-none" id="stepFive" >
+      
       <div class="form_wrap">
         <div class="form_1 data_info">
           <h2>¿Algo más que añadir?</h2>
@@ -583,82 +250,41 @@
                 <textarea row="4" style="width:438px;height:200px;" placeholder="Especifica todos los detalles de tu presupuesto" required id="txtComentarios"></textarea>
               </div>
               
+        <div class="btnsContainer">
+          <div class="btns_wrap">
+            <div class="common_btns form_1_btns">
+              <a
+                class="btn_next"
+                id="btnCREAR"
+                href="#stepOne"
+              >
+              
+                CREAR
+                <span class="icon">
+                </span>
+              </a>
+            </div>
+         
+          </div>
+
+          <div class="btns_wrap"></div>
+        </div>
+      </div>
+    </div>
             </div>
           </form>
         </div>
 
-        <div class="btnsContainer">
-          <div class="btns_wrap">
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnPrevStep"
-                onclick="prevStep('stepFive')"
-              >
-              <ion-icon name="arrow-back-outline"> </ion-icon>
-                Anterior
-                <span class="icon">
-                </span>
-              </button>
-            </div>
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                
-                class="btn_next"
-                id="btnNextStep"
-                onclick="nextStep('stepFive')"
-              >
-                Finalizar
-                <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div class="btns_wrap"></div>
-        </div>
+       
       </div>
     </div>
 
-    <div class="wrapper" id="stepEnd" style="display: none">
-      
-      <div class="form_wrap">
-        <div class="form_1 data_info">
-          <p>
-            Gracias por realizar la consulta, nuestros trabajadores
-se pondran en contacto contigo cuando se autorize un presupuesto.
-          </p>
-        
-        </div>
+    
 
-        <div class="btnsContainer">
-          <div class="btns_wrap">
-            <div class="common_btns form_1_btns">
-              <button
-                type="button"
-                class="btn_next"
-                id="btnPrevStep"
-                onclick="window.open('C:/Desarrollo/PROYECTOS%20UADEC/landingPresupuestosCompanyApp/index.html',_selft)"
-              >
-                Cerrar
-                <span class="icon">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
-                </span>
-              </button>
-            </div>
-            
-          </div>
-
-          <div class="btns_wrap"></div>
-        </div>
-      </div>
-    </div>
-    <script src="./js/firebase.js" type="module"></script>
-    <script src="./js/form.js" type="module" ></script>
+    
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 
+   
   </body>
 </html>
