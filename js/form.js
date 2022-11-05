@@ -138,19 +138,21 @@ function guardarDatos() {
 }
 
 document.getElementById("btnCREAR").addEventListener("click", function () {
+  validaciones();
+
+  
+  
+ 
+});
+
+function validaciones(){
   if (
     !inputNombre.value ||
     inputNombre.value === " " ||
     !inputEmail.value ||
     inputEmail.value === " " ||
     !inputTelefono.value ||
-    inputTelefono.value === " " ||
-    !inputUnidades.value ||
-    inputUnidades.value === " " ||
-    !inputMedidas.value ||
-    inputMedidas.value === " " ||
-    !inputComentarios.value ||
-    inputComentarios.value === " "
+    inputTelefono.value === " "
   ) {
     Swal.fire(
       "Campos Requeridos!",
@@ -160,12 +162,70 @@ document.getElementById("btnCREAR").addEventListener("click", function () {
     return;
   }
 
-  guardarDatos();
-  Swal.fire(
-    "Su solicitud se ha enviado correctamente!",
-    "En algunos dias recibirá noticias de nosotros... ",
-    "success"
-  );
-  
- 
-});
+  else if(!campos.nombre || !campos.email || !campos.telefono){
+    Swal.fire(
+      "Campos Incorrectos!",
+      "Por favor rellena todos los campos de manera correcta",
+      "error"
+    );
+    return;
+  }
+
+
+  //VALIDACION DE MEDIDAS
+ if(!inputMedidas.value ||
+    inputMedidas.value === " "){
+      Swal.fire(
+        "Campos Requeridos!",
+        "Por favor rellena todos los campos",
+        "error"
+      );
+      return;
+    }
+    else if(!campos.medidas){
+      Swal.fire(
+        "Campos Incorrectos!",
+        "Por favor rellena todos los campos de manera correcta",
+        "error"
+      );
+      return;
+    }
+//VALIDACION DE UNIDADES
+if(!inputUnidades.value ||
+  inputUnidades.value === " "){
+    Swal.fire(
+      "Campos Requeridos!",
+      "Por favor rellena todos los campos",
+      "error"
+    );
+    return;
+  }
+  else if(inputUnidades.value > 10 || inputUnidades.value < 1 || !campos.unidades){
+    Swal.fire(
+      "Campos Incorrectos!",
+      "Solo se pueden elegir 10 unidades maximo y minimo 1 unidad",
+      "error"
+    ); 
+    return;
+  }
+
+  //VALIDACION COMENTARIOS
+ if(!inputComentarios.value ||
+    inputComentarios.value === " "){
+      Swal.fire(
+        "Campos Requeridos!",
+        "Por favor rellena todos los campos",
+        "error"
+      );
+      return;
+    }
+ //VALIDACION FINAL
+if(campos.nombre && campos.email && campos.telefono && campos.medidas && inputUnidades.value >=1 && inputUnidades.value <=10 && campos.unidades){
+    guardarDatos();
+    Swal.fire(
+      "Su solicitud se ha enviado correctamente!",
+      "En algunos dias recibirá noticias de nosotros... ",
+      "success"
+    );
+  }
+}
