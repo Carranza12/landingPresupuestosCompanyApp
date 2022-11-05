@@ -1,3 +1,5 @@
+import { saveClienteEnEspera } from "./firebase";
+
 const btnNextStep = window.document.getElementById("btnNextStep");
 const circlesContainer = window.document.getElementById("circlesContainer");
 let currentStep = "stepInitial";
@@ -280,5 +282,5 @@ var comentariosGuardar = inputComentarios.value;
     "details": comentariosGuardar
   }
 
-  console.log(arreglo);
+saveClienteEnEspera(arreglo);
 }

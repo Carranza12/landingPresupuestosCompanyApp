@@ -11,22 +11,11 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
-const document = {
-
-}
 
 export const saveClienteEnEspera=(data)=>{
-   addDoc(collection(db,'clientes_en_espera'),{
-       full_name:"",
-       phone:"",
-       how_many_units:1,
-       land_measures:"",
-       type_job:"",
-       email:"",
-       details:"",
-       budget:"",
+   const res = addDoc(collection(db, 'clientes_en_espera', data));
+   console.log(res);
 
-   })
 }
 
 
