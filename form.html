@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/form.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     
     <script type="module" src="./js/firebase.js" ></script>
     <script  type="module" src="./js/form.js" ></script>
@@ -11,15 +12,18 @@
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
+    <script src="https://kit.fontawesome.com/b3fba25fe1.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    
     <div class="wrapper" id="stepInitial" style="height: 100vh;">
-     
+      <a class=" btn btn-primary btn-sm" href="index.html" target="_self" id="btn_regresar"><i class="fa-solid fa-house"></i></a>
       <div class="form_wrap">
-        <div class="form_1 data_info">
-          <h2>Bienvenido al cotizador online!</h2>
+        <div class="form_1 data_info" id="bienvenida">
+          
           <form>
             <div class="form_container">
+              <h2>Bienvenido al cotizador online!</h2>
               <p class="text-welcome">
                 Para ofrecerte la mejor experiencia en esta cotización virtual,
                 por favor llena los siguientes datos importantes, te tomará 5
