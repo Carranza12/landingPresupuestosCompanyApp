@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site":"landing-presupuestos-dev",
     "public": "public",
     "ignore": [
       "firebase.json",
