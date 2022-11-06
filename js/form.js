@@ -251,7 +251,7 @@ if(campos.nombre && campos.email && campos.telefono && campos.medidas && inputUn
             guardarDatos();
             console.log("*se solicito con exito*");
         } else {
-            // Dijeron que no
+            // Eligieron cancelar
             location.reload();
             console.log("*Se cancelo la solicitud*");
         }
